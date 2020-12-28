@@ -1,4 +1,4 @@
-module github.com/vishvananda/netns
+module github.com/imilchev/netns
 
 go 1.12
 
