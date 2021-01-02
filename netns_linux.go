@@ -219,9 +219,9 @@ func getPidForContainer(id string) (int, error) {
 		// Even more recent docker versions under cgroup/systemd/docker/<id>/
 		filepath.Join(cgroupRoot, "..", "systemd", "docker", id, "tasks"),
 		// Kubernetes with docker and CNI is even more different. Works for BestEffort and Burstable QoS
-		filepath.Join(cgroupRoot, "..", "systemd", "kubepods", "*", "pod*", id, "tasks"),
+		filepath.Join(cgroupRoot, "kubepods", "*", "pod*", id, "tasks"),
 		// Same as above but for Guaranteed QoS
-		filepath.Join(cgroupRoot, "..", "systemd", "kubepods", "pod*", id, "tasks"),
+		filepath.Join(cgroupRoot, "kubepods", "pod*", id, "tasks"),
 		// Another flavor of containers location in recent kubernetes 1.11+. Works for BestEffort and Burstable QoS
 		filepath.Join(cgroupRoot, cgroupThis, "kubepods.slice", "*.slice", "*", "docker-"+id+".scope", "tasks"),
 		// Same as above but for Guaranteed QoS
